@@ -48,6 +48,7 @@ To convert raw IP-level traffic data into enriched records containing location, 
 3. The enrichment logic is modular, reusable, and ready for production integration in real-time pipelines.
 
 📂 Output:
+
 data/
 ├── ip_logs_raw.csv           # Raw IP traffic logs (mock)
 └── enriched_logs.csv         # Enriched records with threat context
