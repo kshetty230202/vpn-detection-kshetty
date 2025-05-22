@@ -46,11 +46,3 @@ To convert raw IP-level traffic data into enriched records containing location, 
 2. This mimics what real cybersecurity platforms do when correlating IP traffic with third-party intelligence sources.
 
 3. The enrichment logic is modular, reusable, and ready for production integration in real-time pipelines.
-
-📂 Output:
-
-data/
-├── ip_logs_raw.csv           # Raw IP traffic logs (mock)
-└── enriched_logs.csv         # Enriched records with threat context
-backend/
-└── enrich.py                 # Reusable Python enrichment pipeline
