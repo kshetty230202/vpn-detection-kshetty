@@ -23,36 +23,29 @@ This version is recreated and maintained by Krish Shetty for personal use, docum
 # 📌 Phase 1 – Data Enrichment Pipeline
 In this phase, the goal was to simulate a real-world security system where raw IP logs are enhanced with contextual intelligence before being analyzed or classified.
 
-✅ Objective:
+## ✅ Objective:
 To convert raw IP-level traffic data into enriched records containing location, ISP, and risk-related metadata using external threat intelligence APIs.
 
-🛠️ What We Did:
-Created a mock dataset (ip_logs_raw.csv) containing:
+## 🛠️ What We Did:
+1. Created a mock dataset (ip_logs_raw.csv) containing:
+    a. IP address
+    b. Timestamp
+    c. User agent
+    d. Connection type
 
-IP address
+2. Developed an enrichment module (enrich.py) that:
+    a. Uses the ip-api.com service to retrieve metadata for each IP address
+    b. Extracts fields like country, city, ISP, proxy usage, and hosting flags
+    c. Gracefully handles API failures and malformed data
 
-Timestamp
+3. Generated a new enriched dataset (enriched_logs.csv) with both original and augmented features
 
-User agent
+## 🧠 Why It Matters:
+1. Enriched data provides context critical for downstream ML models to make informed predictions.
 
-Connection type
+2. This mimics what real cybersecurity platforms do when correlating IP traffic with third-party intelligence sources.
 
-Developed an enrichment module (enrich.py) that:
-
-Uses the ip-api.com service to retrieve metadata for each IP address
-
-Extracts fields like country, city, ISP, proxy usage, and hosting flags
-
-Gracefully handles API failures and malformed data
-
-Generated a new enriched dataset (enriched_logs.csv) with both original and augmented features
-
-🧠 Why It Matters:
-Enriched data provides context critical for downstream ML models to make informed predictions.
-
-This mimics what real cybersecurity platforms do when correlating IP traffic with third-party intelligence sources.
-
-The enrichment logic is modular, reusable, and ready for production integration in real-time pipelines.
+3. The enrichment logic is modular, reusable, and ready for production integration in real-time pipelines.
 
 📂 Output:
 data/
