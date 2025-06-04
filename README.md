@@ -69,3 +69,23 @@ Train a binary classification model that predicts whether an IP connection is su
 ## 🔍 Why It Matters:
 This phase created the intelligence layer of ShadowNet, turning enriched IP logs into actionable threat predictions.
 It also showcases your ability to move from data preprocessing to model evaluation and production-readiness — exactly what ML recruiters look for.
+
+
+# 🚀 Phase 3 – Backend API Deployment
+
+## ✅ Objective:
+Deploy a production-ready prediction endpoint that receives enriched IP data and returns real-time VPN threat classification.
+
+## 🛠️ What We Did:
+1. Built a FastAPI-based backend (`api.py`) to serve predictions
+2. Loaded trained Random Forest model and label encoders
+3. Exposed two routes:
+   - `/ping` – Health check
+   - `/predict` – Accepts JSON, returns “Safe” or “Suspicious”
+4. Handled error cases such as unknown encodings and inference failures
+5. Confirmed functionality using Postman
+
+## 📌 Why It Matters:
+- This phase transformed our ML logic into a real-time service
+- It simulates how security products expose RESTful APIs to integrate with UIs or downstream systems
+- It's the foundation for building the frontend interface and scaling the product
