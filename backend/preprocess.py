@@ -1,3 +1,4 @@
+import joblib
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
@@ -17,8 +18,8 @@ def preprocessDataIP(csv):
 
 
     # encoding categorical features
-    countyLabel = LabelEncoder()
-    df['country_encoded'] = countyLabel.fit_transform(df['country'])
+    countryLabel = LabelEncoder()
+    df['country_encoded'] = countryLabel.fit_transform(df['country'])
 
 
     # encoding 'isp' feature
@@ -28,3 +29,10 @@ def preprocessDataIP(csv):
 
     # saving the file
     df[['country_encoded', 'isp_encoded', 'is_proxy', 'is_hosting', 'is_suspicious']].to_csv('data\preprocessed_data.csv')
+
+    #
+    countryPath = "models/countryLabels.pkl"
+    ipsPath = "models/ispLabels.pkl"
+    joblib.dump(countryLabel, countryPath)
+    joblib.dump(ispLabel, ipsPath)
+    print(f"Labels saved to {countryPath}")

@@ -40,3 +40,10 @@ def trainTestModelRF(csv):
     model_path = "models/vpn_rf_model.pkl"
     joblib.dump(modelObject, model_path)
     print(f"Model saved to {model_path}")
+
+
+
+if __name__ == "__main__":
+    from sys import argv
+    csv_path = argv[1] if len(argv) > 1 else "data/preprocessed_data.csv"
+    trainTestModelRF(csv_path)
