@@ -12,7 +12,7 @@ model = joblib.load("models/vpn_rf_model.pkl")
 
 # loading the encoders
 countryEncoder = joblib.load("models/countryLabels.pkl")
-ispEncoder = joblib.load("model/ispLables.pkl")
+ispEncoder = joblib.load("models/ispLabels.pkl")
 
 class IPRequest(BaseModel):
     country: str
@@ -31,8 +31,15 @@ def ping():
 def predict(data: IPRequest):
     try:
         # Encode inputs  using loaded LabelEncoders
-        countryEncoded = countryEncoder.transform([data.country])[0]
-        ispEncoded = ispEncoder.transform([data.isp])[0]
+        try:
+            countryEncoded = countryEncoder.transform([data.country])[0]
+        except ValueError:
+            return {"error": f"Encoding error: country contains unseen label '{data.country}'"}
+
+        try:
+            ispEncoded = ispEncoder.transform([data.isp])[0]
+        except ValueError:
+            return {"error": f"Encoding error: isp contains unseen label '{data.isp}'"}
 
         # Create input array
         input_data = [[countryEncoded, ispEncoded, data.is_proxy, data.is_hosting]]
